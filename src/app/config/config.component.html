@@ -1,0 +1,22 @@
+<div class="container">
+
+  <nav>
+    <button id="step1" routerLink="step-1" routerLinkActive="active">Step 1</button>
+    <button id="step2" routerLink="step-2" routerLinkActive="active" [disabled]="!step2Enabled">Step 2</button>
+    <button id="step3" routerLink="step-3" routerLinkActive="active" [disabled]="!step3Enabled">Step 3</button>
+  </nav>
+
+  <router-outlet/>
+
+  <!--  <mat-tab-group animationDuration="0ms" (selectedIndexChange)="changeTab($event)">-->
+
+  @if (configService.car_src) {
+    <div class="car_img">
+      <img ngSrc="{{ configService.car_src }}" width="900" height="500" alt="car selected">
+    </div>
+  }
+
+</div>
+
+
+

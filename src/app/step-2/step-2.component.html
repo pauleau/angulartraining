@@ -1,0 +1,35 @@
+<h1>Step 2: Select your config and options</h1>
+
+<div class="filters">
+  <!-- Config filter -->
+  <mat-form-field>
+    <mat-label>Config:</mat-label>
+    <mat-select (selectionChange)="selectConfig()" [(ngModel)]="filter_config" id="configSelect">
+      @for (config of option.configs; track config) {
+        <mat-option value="{{ config.id }}">
+          {{ config.description }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<!-- Config data -->
+@if (!!configService.choice.config.range) {
+  <div class="selected_config">
+    <span>Range: {{ configService.choice.config.range }} miles</span> -
+    <span>Max speed: {{ configService.choice.config.speed }}</span> -
+    <span>Cost: {{ configService.choice.config.price | currency: 'USD' }}</span>
+  </div>
+}
+
+<!-- Package checkboxes -->
+<div class="filters_checkbox">
+  @if (option.towHitch) {
+    <mat-checkbox labelPosition="before" [(ngModel)]="configService.choice.towHitch" id="includeYoke">Tow hitch?</mat-checkbox>
+  }
+  <br/>
+  @if (option.yoke) {
+    <mat-checkbox labelPosition="before" [(ngModel)]="configService.choice.yoke" id="includeTow">Yoke steering wheel?</mat-checkbox>
+  }
+</div>

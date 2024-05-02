@@ -1,0 +1,10 @@
+td {
+  border: none;
+}
+.table--border {
+  td {
+    border: 1px solid white;
+    border-left: 0px;
+    border-right: 0px;
+  }
+}

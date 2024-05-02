@@ -1,0 +1,53 @@
+<h1>Step 3: Summary</h1>
+
+<div class="config_summary">
+  <h2>Your Tesla {{ configService.choice.model.description }}</h2>
+
+  <table>
+    <!-- Model and config row -->
+    @if (configService.choice.config.description) {
+      <tr>
+        <td>
+          <b>{{ configService.choice.config.description }}</b> <br>
+          <div class="selected_config">
+            <span>Range: {{ configService.choice.config.range }} miles</span> -
+            <span>Max speed: {{ configService.choice.config.speed }}</span>
+          </div>
+        </td>
+        <td>{{ configService.choice.config.price | currency }}</td>
+      </tr>
+    }
+
+    <!-- Color row -->
+    @if (configService.choice.color.price > 0) {
+      <tr>
+        <td>
+          <b>{{ configService.choice.color.description }}</b>
+        </td>
+        <td>{{ configService.choice.color.price | currency }}</td>
+      </tr>
+    }
+
+    <!-- Packages rows -->
+    @if (configService.choice.towHitch) {
+      <tr>
+        <td><b>Two Hitch Package</b></td>
+        <td>{{ 1000 | currency }}</td>
+      </tr>
+    }
+    @if (configService.choice.yoke) {
+      <tr>
+        <td><b>Yoke steering wheel Package</b></td>
+        <td>{{ 1000 | currency }}</td>
+      </tr>
+    }
+
+    <!-- TOTAL -->
+    @if (!!total) {
+      <tr class="table--border">
+        <td><b>TOTAL COST</b></td>
+        <td>{{ total | currency }}</td>
+      </tr>
+    }
+  </table>
+</div>
