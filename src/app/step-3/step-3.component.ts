@@ -24,6 +24,7 @@ export class Step3Component implements OnInit {
 
   ngOnInit(): void {
     this.getDefaultData();
+
     this.total = this.configService.choice.color.price
       + (+this.configService.choice.yoke * 1000)
       + (+this.configService.choice.towHitch * 1000)

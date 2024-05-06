@@ -15,12 +15,4 @@ export class ModelService {
   getAllModels(): Observable<ModelModel[]> {
     return this.http.get<ModelModel[]>('/models');
   }
-
-  // get(modelId: string): void {
-  //   this.getAllModels().pipe(
-  //     filter((model: ModelModel[]) => {
-  //       return modelId === modelId;
-  //     })
-  //   );
-  // }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
@@ -6,7 +6,7 @@ import {CurrencyPipe, NgOptimizedImage} from "@angular/common";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {ConfigService} from "../services/config.service";
-import {ChoiceModel} from "../models/model.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-config',
@@ -27,22 +27,20 @@ import {ChoiceModel} from "../models/model.model";
   templateUrl: './config.component.html',
   styleUrl: './config.component.scss'
 })
-export class ConfigComponent implements OnInit {
+export class ConfigComponent implements OnInit, OnDestroy {
   step2Enabled: boolean = false;
   step3Enabled: boolean = false;
+
+  subscription: Subscription = new Subscription();
 
   constructor(
     protected configService: ConfigService,
   ) {
   }
 
-  onStepChanged(componentRef: any) {
-    console.log("event : ", componentRef);
-  }
-
   ngOnInit(): void {
     // Listening on the config shared service that will transfer opening step between step and main config component.
-    this.configService.sharedVariable$.subscribe(([stepId, toggle]) => {
+    const subscription = this.configService.sharedVariable$.subscribe(([stepId, toggle]) => {
       switch (stepId) {
         case 2:
           this.step2Enabled = toggle;
@@ -52,5 +50,9 @@ export class ConfigComponent implements OnInit {
           break;
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
