@@ -1,4 +1,21 @@
+body {
+  background: #000;
+}
+
 .container {
   width: 900px;
   margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+
+  button {
+    flex: 1;
+  }
+}
+
+h1 {
+  margin-bottom: 25px;
 }
