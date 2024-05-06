@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import {filter, map, Observable, pipe, tap} from "rxjs";
-import {OptionModel} from "../models/options.model";
+import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ModelModel} from "../models/model.model";
 

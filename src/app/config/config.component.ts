@@ -40,7 +40,7 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Listening on the config shared service that will transfer opening step between step and main config component.
-    const subscription = this.configService.sharedVariable$.subscribe(([stepId, toggle]) => {
+    this.subscription = this.configService.sharedVariable$.subscribe(([stepId, toggle]) => {
       switch (stepId) {
         case 2:
           this.step2Enabled = toggle;

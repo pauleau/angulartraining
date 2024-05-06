@@ -1,8 +1,5 @@
-import {Component, Input, OnChanges, OnInit, signal, SimpleChanges, WritableSignal} from '@angular/core';
-import {ConfigModel, OptionModel} from "../models/options.model";
-import {ChoiceModel, ColorModel, ModelModel} from "../models/model.model";
+import {Component, OnInit, } from '@angular/core';
 import {CurrencyPipe} from "@angular/common";
-import {OptionsService} from "../services/options.service";
 import {ConfigService} from "../services/config.service";
 
 @Component({
