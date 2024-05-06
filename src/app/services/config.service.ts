@@ -8,7 +8,7 @@ import {ConfigModel} from "../models/options.model";
 })
 export class ConfigService {
   private stepOpen = new BehaviorSubject<[number, boolean]>([0, false])
-  sharedVariable$: Observable<any> = this.stepOpen.asObservable();
+  sharedVariable$: Observable<[number, boolean]> = this.stepOpen.asObservable();
 
   choice: ChoiceModel = new ChoiceModel();
   car_src?: string;
